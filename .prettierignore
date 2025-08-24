@@ -1,0 +1,26 @@
+# Diretórios de build e dependências
+node_modules
+build
+dist
+coverage
+
+# Logs
+*.log
+
+# Configurações de sistema/IDE
+.vscode
+.idea
+
+# Lockfiles que não precisam ser formatados
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Saídas do Next.js ou Expo (caso use)
+.next
+.expo
+out
+
+# Arquivos de ambiente
+.env
+.env.*
