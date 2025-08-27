@@ -25,10 +25,12 @@ export default function InputCheckbox({
   ...props
 }: InputCheckboxProps) {
   if (loading) {
-    <Skeleton
-      rounded="sm"
-      className={inputCheckboxVariants({ variant: 'none', size })}
-    />;
+    return (
+      <Skeleton
+        rounded="sm"
+        className={inputCheckboxVariants({ variant: 'none', size })}
+      />
+    );
   }
 
   return (
