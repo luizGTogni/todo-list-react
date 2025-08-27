@@ -1,17 +1,6 @@
 import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-
-const iconVariants = cva('', {
-  variants: {
-    animate: {
-      false: '',
-      true: 'animate-spin',
-    },
-  },
-  defaultVariants: {
-    animate: false,
-  },
-});
+import { type VariantProps } from 'class-variance-authority';
+import { iconVariants } from './variants';
 
 interface IconProps
   extends React.ComponentProps<'svg'>,
