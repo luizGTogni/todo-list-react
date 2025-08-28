@@ -2,11 +2,11 @@ import PlusIcon from '../../assets/icons/plus.svg?react';
 import Button from '../../components/Button';
 import useTask from '../../hooks/use-task';
 import useTasks from '../../hooks/use-tasks';
-import { TaskState } from '../../models/task';
+import { TaskState, type Task } from '../../models/task';
 import TaskItem from '../TaskItem';
 
 export default function TaskList() {
-  const { tasks } = useTasks();
+  const { tasks, isLoadingTasks } = useTasks();
   const { prepareTask } = useTask();
 
   function handleNewTask() {
@@ -19,16 +19,25 @@ export default function TaskList() {
         <Button
           icon={PlusIcon}
           className="w-full"
-          disabled={tasks.some((task) => task.state === TaskState.Creating)}
+          disabled={
+            tasks.some((task) => task.state === TaskState.Creating) ||
+            isLoadingTasks
+          }
           onClick={handleNewTask}
         >
           Nova tarefa
         </Button>
       </section>
       <section className="space-y-2">
-        {tasks.map((task) => (
-          <TaskItem key={task.id} task={task} />
-        ))}
+        {!isLoadingTasks &&
+          tasks.map((task) => <TaskItem key={task.id} task={task} />)}
+        {isLoadingTasks && (
+          <>
+            <TaskItem task={{} as Task} loading />
+            <TaskItem task={{} as Task} loading />
+            <TaskItem task={{} as Task} loading />
+          </>
+        )}
       </section>
     </>
   );
